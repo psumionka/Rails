@@ -41,7 +41,7 @@ Gallery::Application.configure do
 
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
   # config.force_ssl = true
-
+  config.action_mailer.default_url_options = { :host => 'adres server produkcyjnego' }
   # Set to :debug to see everything in the log.
   config.log_level = :info
 
@@ -71,7 +71,7 @@ Gallery::Application.configure do
 
   # Send deprecation notices to registered listeners.
   config.active_support.deprecation = :notify
-
+  
   # Disable automatic flushing of the log to improve performance.
   # config.autoflush_log = false
 
