@@ -1,0 +1,70 @@
+[33mcommit edf0c65cd59bd68fee61f88b8322586c3785924f[m
+Author: Pawel Sumionka <pawsumio@student.pg.gda.pl>
+Date:   Thu May 15 20:47:57 2014 +0200
+
+    Your Message
+
+[1mdiff --git a/app/views/layouts/_header.html.erb b/app/views/layouts/_header.html.erb[m
+[1mindex c6f957d..71c2acf 100644[m
+[1m--- a/app/views/layouts/_header.html.erb[m
+[1m+++ b/app/views/layouts/_header.html.erb[m
+[36m@@ -13,22 +13,16 @@[m
+ [m
+     <!-- Collect the nav links, forms, and other content for toggling -->[m
+     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">[m
+[31m-      <ul class="nav navbar-nav">[m
+[31m-        <li class="active"><a href="#">Link</a></li>[m
+[31m-        <li><a href="#">Link</a></li>[m
+[31m-        <li class="dropdown">[m
+[31m-          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>[m
+[31m-          <ul class="dropdown-menu">[m
+[31m-            <li><a href="#">Action</a></li>[m
+[31m-            <li><a href="#">Another action</a></li>[m
+[31m-            <li><a href="#">Something else here</a></li>[m
+[31m-            <li class="divider"></li>[m
+[31m-            <li><a href="#">Separated link</a></li>[m
+[31m-            <li class="divider"></li>[m
+[31m-            <li><a href="#">One more separated link</a></li>[m
+[31m-          </ul>[m
+[31m-        </li>[m
+[32m+[m[32m      <ul class="nav navbar-nav navbar-right">[m
+[32m+[m[32m          <li><%= link_to "Home", root_path %></li>[m
+[32m+[m[32m          <li><%= link_to "About", about_path %></li>[m
+[32m+[m[32m        <% if user_signed_in? %>[m
+[32m+[m[32m          <li><%= link_to "Log out", destroy_user_session_path, method: :delete %></li>[m
+[32m+[m[32m        <% else %>[m
+[32m+[m[32m          <li><%= link_to "Sign in", new_user_session_path %></li>[m
+[32m+[m[32m        <% end %>[m
+       </ul>[m
+[32m+[m
+       <form class="navbar-form navbar-left" role="search">[m
+         <div class="form-group">[m
+           <input type="text" class="form-control" placeholder="Search">[m
+[1mdiff --git a/app/views/pages/home.html.erb b/app/views/pages/home.html.erb[m
+[1mindex 666572b..1ea4240 100644[m
+[1m--- a/app/views/pages/home.html.erb[m
+[1m+++ b/app/views/pages/home.html.erb[m
+[36m@@ -1,13 +1,15 @@[m
+ <h1>Hello Rails!</h1>[m
+ <p> Sign up <%= link_to "here", "#" %> </p>[m
+[31m-<div class=jumbotron>[m
+[31m-<center>[m
+[31m-<h1>Strona domowa</h1>[m
+[31m-<p><%= link_to "Login", "#", class: "btn btn-default" %> [m
+[31m-[m
+[31m-<%= link_to "Sign up", "#", class: "btn btn-primary" %>[m
+[31m-[m
+[32m+[m[32m<div class="jumbotron center">[m
+[32m+[m[32m<h1>Witaj w mojej apce!</h1>[m
+[32m+[m[32m<% if user_signed_in? %>[m
+[32m+[m[32m# do something[m
+[32m+[m[32m<% else %>[m
+[32m+[m[32m<p>[m
+[32m+[m[32m<%= link_to "Log in", new_user_session_path, class: "btn btn-default btn-lg" %>[m
+[32m+[m[32m<%= link_to "Sign up", new_user_registration_path, class: "btn btn-primary btn-lg" %>[m
+ </p>[m
+[31m-[m
+[32m+[m[32m<% end %>[m[41m [m
+ </div>[m
+[32m+[m
+ </center>[m
